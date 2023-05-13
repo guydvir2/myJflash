@@ -21,7 +21,7 @@
 class myJflash
 {
 protected:
-    const char *ver = "jFlash_v0.1";
+    const char *ver = "jFlash_v0.1a";
 
 public:
     bool useSerial = false;
