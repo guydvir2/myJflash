@@ -20,7 +20,6 @@
 
 class myJflash
 {
-
 protected:
     const char *ver = "jFlash_v0.1";
 
