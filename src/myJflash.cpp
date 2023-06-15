@@ -56,6 +56,7 @@ String myJflash::readFile2String(const char *fileName)
 }
 bool myJflash::writeFile(JsonDocument &DOC, const char *filename)
 {
+	_startFS();
 	return _saveFile(DOC, filename);
 }
 void myJflash::_startFS()
@@ -63,7 +64,12 @@ void myJflash::_startFS()
 #if defined(ESP8266)
 	LITFS.begin();
 #elif defined(ESP32)
-	LITFS.begin(true);
+	if(LITFS.begin(true)){
+		Serial.println("MOUNT_OK");
+	}
+	else{
+		Serial.println("MOUNT_FAIL");
+	}
 #endif
 }
 void myJflash::_endFS()
