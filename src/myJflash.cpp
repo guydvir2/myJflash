@@ -12,6 +12,11 @@ void myJflash::set_filename(const char *filename)
 {
 	_filename = filename;
 }
+bool myJflash::exists(const char *filename)
+{
+	_startFS();
+	return LITFS.exists(_retFilename(filename));
+}
 bool myJflash::readFile(JsonDocument &DOC, const char *filename)
 {
 	_startFS();
@@ -56,6 +61,7 @@ String myJflash::readFile2String(const char *fileName)
 }
 bool myJflash::writeFile(JsonDocument &DOC, const char *filename)
 {
+	_startFS();
 	return _saveFile(DOC, filename);
 }
 void myJflash::_startFS()
